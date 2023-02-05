@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Flee;
 
 namespace VariableProvider
@@ -8,6 +9,7 @@ namespace VariableProvider
         #region Fields
         private static VariableProvider Instance = null;
         private static object InstanceLock = new object();
+        private ConditionalWeakTable<string, object> _cwt = new ConditionalWeakTable<string, object>();
         #endregion
 
         #region Constructor
@@ -29,7 +31,15 @@ namespace VariableProvider
 
             }
         }
-
+        public static VariableProvider GetInstance()
+        {
+            return Instance;
+        }
         #endregion
+
+        public void CreateVariable(string name, object value = null, object owner = null)
+        {
+            
+        }
     }
 }
